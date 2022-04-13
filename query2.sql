@@ -1,6 +1,6 @@
 --Creating a temporary Table for EOM Data 
-DROP TABLE IF EXISTS #EOMDate
-CREATE TABLE #EOMDate
+DROP TABLE IF EXISTS ##EOMDate
+CREATE TABLE ##EOMDate
 (EOMDate date)
 
 /*Create a EOM table*/
@@ -18,9 +18,9 @@ DECLARE @totalCount AS int = @TotalNumberOfMonths
 WHILE @counter<@totalCount
 BEGIN
 	SET @EOM = EOMONTH(@StartDate, @counter)
-	INSERT INTO #EOMDate
+	INSERT INTO ##EOMDate
 	VALUES(@EOM)
 	SET @counter = @counter + 1
 END 
 
-SELECT * FROM #EOMDate
+SELECT * FROM ##EOMDate
